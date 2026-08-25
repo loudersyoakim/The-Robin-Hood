@@ -1,5 +1,5 @@
 const SHEET_NAME = "Sheet1";   
-const PASSWORD   = "LawakBADUT26@
+const PASSWORD   = "MASUKKAN PW ANDA";
 
 function doGet(e) {
   const sheet = getSheet_();
