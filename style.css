@@ -49,7 +49,8 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  /* HAPUS align-items dan justify-content di sini */
+  align-items: flex-start;
+  justify-content: center;
   padding: 32px 16px;
   overflow-y: auto;
   z-index: 1;
@@ -57,7 +58,6 @@ body {
 
 /* ---------- frame ---------- */
 .frame {
-  margin: auto;
   max-width: 760px;
   width: 100%;
   padding: 14px;
