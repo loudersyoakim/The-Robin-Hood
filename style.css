@@ -412,30 +412,3 @@ tr.rank-3 .col-idr {
     width: 90px;
   }
 }
-
-/* Menambahkan spasi dan mengatur ukuran dasar mahkota */
-tr.rank-1 .col-rank::before,
-tr.rank-2 .col-rank::before,
-tr.rank-3 .col-rank::before {
-  display: inline-block;
-  margin-right: 6px;
-  font-size: 1.15rem;
-}
-
-/* Mahkota Emas (Rank 1) */
-tr.rank-1 .col-rank::before {
-  content: "\265B";
-  color: #ffdf70; /* Emas terang agar kontras dengan background gelap */
-}
-
-/* Mahkota Perak (Rank 2) */
-tr.rank-2 .col-rank::before {
-  content: "\265B";
-  color: #5b6165; /* Abu-abu gelap menyesuaikan teks rank 2 */
-}
-
-/* Mahkota Perunggu (Rank 3) */
-tr.rank-3 .col-rank::before {
-  content: "\265B";
-  color: #ffc9a6; /* Perunggu/peach terang */
-}
