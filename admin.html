@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelola Data — The Robin Hood Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <div class="wood-stage">
+    <div class="frame">
+      <div class="frame-inner">
+        <div class="board admin-board">
+
+          <header class="board-header">
+            <div class="brand">
+              <span class="brand-mark">HFM</span>
+              <span class="brand-sub">HF Markets</span>
+            </div>
+            <h1 class="title admin-title"><span>Kelola Data Leaderboard</span></h1>
+            <p class="tagline">Tambah, ubah, atau hapus peserta</p>
+          </header>
+
+          <!-- LOGIN -->
+          <div id="loginPanel" class="login-panel">
+            <label for="passwordInput">Password</label>
+            <input type="password" id="passwordInput" placeholder="Masukkan password" autocomplete="current-password">
+            <label class="remember-row">
+              <input type="checkbox" id="rememberBox"> Ingat di perangkat ini
+            </label>
+            <button id="loginBtn" class="btn btn-primary">Masuk</button>
+            <p id="loginError" class="admin-error"></p>
+          </div>
+
+          <!-- EDITOR (hidden until login) -->
+          <div id="editorPanel" class="editor-panel" hidden>
+            <div class="admin-toolbar">
+              <button id="addRowBtn" class="btn btn-ghost">+ Tambah Peserta</button>
+              <button id="saveBtn" class="btn btn-primary">Simpan Perubahan</button>
+              <button id="logoutBtn" class="btn btn-text">Keluar</button>
+            </div>
+
+            <p id="statusMsg" class="admin-status"></p>
+
+            <div class="table-wrap">
+              <table class="board-table admin-table">
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th class="col-hood">Kode</th>
+                    <th class="col-idr">Jumlah (Rp)</th>
+                    <th class="col-action"></th>
+                  </tr>
+                </thead>
+                <tbody id="editorBody">
+                  <tr><td colspan="4" class="loading-row">Memuat data…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p class="admin-link"><a href="index.html">← Kembali ke Leaderboard</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Robin Hood Leaderboard — HFM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<!-- config.js berisi APPS_SCRIPT_URL, diisi setelah kamu deploy backend (lihat README.md) -->
+<body>
+
+  <div class="wood-stage">
+    <div class="frame">
+      <div class="frame-inner">
+        <div class="board">
+
+          <!-- corner ornaments -->
+          <svg class="leaf leaf-tl" viewBox="0 0 120 120"><use href="#oak-leaf"/></svg>
+          <svg class="leaf leaf-tr" viewBox="0 0 120 120"><use href="#oak-leaf"/></svg>
+
+          <header class="board-header">
+            <div class="brand">
+              <span class="brand-mark">HFM</span>
+              <span class="brand-sub">HF Markets</span>
+            </div>
+
+            <h1 class="title">
+              <svg class="arrow arrow-left" viewBox="0 0 60 24"><use href="#arrow-icon"/></svg>
+              <span>The Robin Hood<br>Leaderboard</span>
+              <svg class="arrow arrow-right" viewBox="0 0 60 24"><use href="#arrow-icon"/></svg>
+            </h1>
+
+            <p class="tagline">Papan Peringkat Profit Bulanan</p>
+
+            <div class="total-box">
+              <span class="total-label">Total Keseluruhan</span>
+              <span class="total-value" id="totalValue">Rp 0</span>
+            </div>
+          </header>
+
+          <div class="table-wrap">
+            <table class="board-table" id="boardTable">
+              <thead>
+                <tr>
+                  <th class="col-rank">Rank</th>
+                  <th class="col-hood">The Hood</th>
+                  <th class="col-idr">IDR</th>
+                </tr>
+              </thead>
+              <tbody id="boardBody">
+                <tr><td colspan="3" class="loading-row">Memuat data…</td></tr>
+              </tbody>
+            </table>
+
+            <svg class="bow" viewBox="0 0 140 480"><use href="#bow-icon"/></svg>
+          </div>
+
+          <p class="updated-note" id="updatedNote"></p>
+          <p class="admin-link"><a href="admin.html">Kelola data →</a></p>
+
+          <svg class="leaf leaf-bl" viewBox="0 0 120 120"><use href="#oak-leaf"/></svg>
+          <svg class="leaf leaf-br" viewBox="0 0 120 120"><use href="#oak-leaf"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- reusable SVG symbols -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <g id="oak-leaf">
+        <path d="M60 10 C30 25 15 55 20 85 C25 100 40 108 55 100 C50 90 55 78 65 75 C60 65 65 55 75 55 C68 48 70 38 78 33 C68 30 62 20 60 10 Z" />
+        <path d="M60 10 L58 95" stroke-width="2" fill="none" />
+      </g>
+      <g id="arrow-icon">
+        <line x1="2" y1="12" x2="52" y2="12" stroke-width="2.5"/>
+        <path d="M40 3 L58 12 L40 21" fill="none" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="2" y1="12" x2="10" y2="8" stroke-width="2"/>
+        <line x1="2" y1="12" x2="10" y2="16" stroke-width="2"/>
+      </g>
+      <g id="bow-icon">
+        <path d="M35 20 C10 100 10 380 35 460" fill="none" stroke-width="5" stroke-linecap="round"/>
+        <line x1="35" y1="20" x2="35" y2="460" stroke-width="1.4" stroke-dasharray="2 4"/>
+        <line x1="30" y1="200" x2="120" y2="240" stroke-width="4" stroke-linecap="round"/>
+        <path d="M120 240 L100 232 M120 240 L100 248" stroke-width="4" stroke-linecap="round"/>
+        <path d="M25 195 L45 195 L35 175 Z"/>
+      </g>
+    </defs>
+  </svg>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
