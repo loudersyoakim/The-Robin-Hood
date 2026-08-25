@@ -4,9 +4,9 @@
 
 const REMEMBER_KEY = "rhl_admin_password";
 
-let originalRows = [];   // data asli dari server: {row, nama, kode, jumlah}
-let workingRows = [];    // salinan yang sedang diedit, tiap item punya _id lokal
-let deletedRows = [];    // baris asli yang dihapus (punya .row dari server)
+let originalRows = [];
+let workingRows = [];
+let deletedRows = [];
 let nextLocalId = 1;
 
 const loginPanel = document.getElementById("loginPanel");
@@ -37,7 +37,7 @@ async function fetchRows() {
 async function postAction(payload) {
   const res = await fetch(APPS_SCRIPT_URL, {
     method: "POST",
-    headers: { "Content-Type": "text/plain;charset=utf-8" }, // hindari CORS preflight
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(payload),
   });
   const data = await res.json();
@@ -61,7 +61,6 @@ async function login() {
   loginBtn.textContent = "Memeriksa…";
 
   try {
-    // verifikasi password dengan mencoba aksi kosong (tidak mengubah apa-apa)
     await postAction({ password: pwd, actions: [] });
 
     if (rememberBox.checked) {
@@ -83,22 +82,31 @@ async function login() {
 
 async function loadAndRender() {
   statusMsg.textContent = "";
-  editorBody.innerHTML = '<tr><td colspan="4" class="loading-row">Memuat data…</td></tr>';
+  editorBody.innerHTML =
+    '<tr><td colspan="4" class="loading-row">Memuat data…</td></tr>';
   try {
     const rows = await fetchRows();
     originalRows = rows;
-    workingRows = rows.map((r) => ({ ...r, _id: "srv-" + r.row, _dirty: false, _new: false }));
+    workingRows = rows.map((r) => ({
+      ...r,
+      _id: "srv-" + r.row,
+      _dirty: false,
+      _new: false,
+    }));
     deletedRows = [];
     renderTable();
   } catch (err) {
     editorBody.innerHTML =
-      '<tr><td colspan="4" class="error-row">Gagal memuat data: ' + escapeHtml(err.message) + "</td></tr>";
+      '<tr><td colspan="4" class="error-row">Gagal memuat data: ' +
+      escapeHtml(err.message) +
+      "</td></tr>";
   }
 }
 
 function renderTable() {
   if (!workingRows.length) {
-    editorBody.innerHTML = '<tr><td colspan="4" class="error-row">Belum ada peserta. Klik "Tambah Peserta".</td></tr>';
+    editorBody.innerHTML =
+      '<tr><td colspan="4" class="error-row">Belum ada peserta. Klik "Tambah Peserta".</td></tr>';
     return;
   }
 
@@ -131,7 +139,8 @@ editorBody.addEventListener("input", (e) => {
 
   if (e.target.classList.contains("f-nama")) row.nama = e.target.value;
   if (e.target.classList.contains("f-kode")) row.kode = e.target.value;
-  if (e.target.classList.contains("f-jumlah")) row.jumlah = Number(e.target.value) || 0;
+  if (e.target.classList.contains("f-jumlah"))
+    row.jumlah = Number(e.target.value) || 0;
 
   markDirty(id);
 });
@@ -171,9 +180,20 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
   workingRows.forEach((r) => {
     if (r._new) {
       if (!r.kode) return; // lewati baris kosong yang belum diisi
-      actions.push({ action: "add", nama: r.nama, kode: r.kode, jumlah: r.jumlah });
+      actions.push({
+        action: "add",
+        nama: r.nama,
+        kode: r.kode,
+        jumlah: r.jumlah,
+      });
     } else if (r._dirty) {
-      actions.push({ action: "update", row: r.row, nama: r.nama, kode: r.kode, jumlah: r.jumlah });
+      actions.push({
+        action: "update",
+        row: r.row,
+        nama: r.nama,
+        kode: r.kode,
+        jumlah: r.jumlah,
+      });
     }
   });
 
